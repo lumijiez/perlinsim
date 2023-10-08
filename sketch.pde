@@ -240,11 +240,14 @@ class Bird {
       
     rotateX(angleX);
     rotateY(angleY);
-      
+
+    //DRY pattern.
+    float cosAngle = cos(angle)*radius;
+    float sinAngle = sin(angle)*radius;
     translate(x, y, 1000);
-    float birdX = cos(angle) * radius * directionX;
-    float birdY = sin(angle) * radius * directionY;
-    float birdZ = sin(angle) * radius;
+    float birdX = cosAngle* directionX;
+    float birdY = sinAngle * directionY;
+    float birdZ = sinAngle;
     
     translate(birdX, birdY, birdZ);
     
@@ -259,16 +262,40 @@ class Bird {
 
 
 color getRandomTreeColor() {
-    int rand = int(random(0, 101));
-    if (rand < 10) return color(255, 69, 0);
-    else if (rand < 20) return autumn1;
-    else if (rand < 30) return autumn2;
-    else if (rand < 40) return autumn3;
-    else if (rand < 50) return autumn4;
-    else if (rand < 60) return autumn5;
-    else if (rand < 70) return autumn6;
-    else if (rand < 80) return autumn7;
-    return darkgreen;
+   int rand = int(random(0, 101));
+color result;
+//Switch statements are faster than if-else statements.
+switch (rand / 10) {
+  case 0:
+    result = (rand < 10) ? color(255, 69, 0) : darkgreen;
+    break;
+  case 1:
+    result = autumn1;
+    break;
+  case 2:
+    result = autumn2;
+    break;
+  case 3:
+    result = autumn3;
+    break;
+  case 4:
+    result = autumn4;
+    break;
+  case 5:
+    result = autumn5;
+    break;
+  case 6:
+    result = autumn6;
+    break;
+  case 7:
+    result = autumn7;
+    break;
+  default:
+    result = darkgreen;
+    break;
+}
+
+return result;
 }
 
 color getRandomFlowerColor() {
@@ -293,14 +320,16 @@ void cylinder(float bottom, float top, float h, int sides) {
     float[] x2 = new float[sides + 1];
     float[] z2 = new float[sides + 1];
 
+    //Also no need to compute each time TWO_PI/sides
+    float angleInc = TWO_PI/sides;
     for (int i = 0; i < x.length; i++) {
-        angle = TWO_PI / (sides) * i;
+        angle = angleInc * i;
         x[i] = sin(angle) * bottom;
         z[i] = cos(angle) * bottom;
     }
 
     for (int i = 0; i < x.length; i++) {
-        angle = TWO_PI / (sides) * i;
+        angle = angleInc * i;
         x2[i] = sin(angle) * top;
         z2[i] = cos(angle) * top;
     }
