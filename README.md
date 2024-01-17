@@ -2,6 +2,12 @@
 
 This project is a terrain generation and biome simulation system implemented in [programming language]. It uses Perlin noise to generate realistic terrains and simulates various biomes with different features. Below, you will find an overview of the key features and instructions on how to use the project.
 
+![image](https://github.com/lumijiez/processing-perlin/assets/59575049/e4e88275-a9dd-4010-bb95-2ab309f49d61)
+
+![image](https://github.com/lumijiez/processing-perlin/assets/59575049/e8e3206c-ca5e-423b-b2e2-4d8c6fd11af4)
+
+
+
 ## Key Features
 
 ### 1. Realistic Terrain Generation Using Perlin Noise
@@ -44,9 +50,7 @@ The project includes a camera system that allows you to control the view using t
 
 You can adjust the noise intensity in real-time using the UP and DOWN keys, allowing you to fine-tune the terrain.
 
-![image](https://github.com/lumijiez/processing-perlin/assets/59575049/2326e02b-401e-472c-aae0-47afb1489a84)
 
-![image](https://github.com/lumijiez/processing-perlin/assets/59575049/50649d5d-bb59-44e5-a559-29635667917c)
 
 
 
