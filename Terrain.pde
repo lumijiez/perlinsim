@@ -3,6 +3,7 @@ class Terrain {
     ArrayList < Bird > birds = new ArrayList < > ();
     ArrayList < Butterfly > butterflies = new ArrayList < > ();
     float blue = 100;
+    float particleOffset;
     float bluedirection = -0.25;
 
     void addButterfly() {
@@ -24,6 +25,8 @@ class Terrain {
                 if (random(0, 1) < 0.001) addButterfly();
             }
         }
+        
+        
     }
 
     void reloadTrees() {
@@ -76,7 +79,7 @@ class Terrain {
             float posY = block.y * cubeLength;
             float posZ = blockHeight / 2.0;
             
-            if (dist(posX, 0.0, posY, position.x, 0.0, position.z) > 1500) return;
+            if (dist(posX, 0.0, posY, position.x, 0.0, position.z) > 2000) return;
             
             pushMatrix();
 
@@ -84,7 +87,10 @@ class Terrain {
             translate(posX, posY, posZ);
             box(cubeWidth, cubeLength, blockHeight);
 
-            if (block.isTree && blockHeight < 350) drawNormalTree(block, posZ);
+            if (block.isTree && blockHeight < 350) {
+            drawNormalTree(block, posZ);
+            block.drawParticles(posZ);
+      }
        else if (block.isTree) drawPineTree(block, posZ);
             
 else if (block.isFlower && blockHeight < 350) drawFlower(block, posZ);
@@ -138,5 +144,14 @@ else if (block.isFlower && blockHeight < 350) drawFlower(block, posZ);
                 noStroke();
                 sphere(10);
                 stroke(1);
+    }
+    
+    void drawParticle(float x, float y, float z, color col) {
+      pushMatrix();
+      translate(x, y, particleOffset);
+      particleOffset -= random(0, 0.001);
+      fill(col);
+      box(10, 10, 10);
+      popMatrix();
     }
 }

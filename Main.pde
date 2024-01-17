@@ -1,8 +1,9 @@
 PVector camPosition = new PVector(1000, -700, 700);
+PVector camPosition1 = new PVector(1000, -700, 700);
 PVector lookAt = new PVector(0, 0, -1);
 PVector wind = new PVector(5, -8, 0);
 Terrain terra = new Terrain();
-Balloon balloon = new Balloon(50 * 20, 50 * 20, 20 * 20);
+PImage skyboxImage;
 
 void setup() {
     fullScreen(P3D);
@@ -12,6 +13,8 @@ void setup() {
     randomSeed(randomSeedValue);
     noiseSeed(noiseSeedValue);
     noiseDetail(noiseOctaves, noiseFalloff);
+
+    skyboxImage = loadImage("hot.jpg");
 
     terra.setup();
     terra.reloadTrees();
@@ -61,9 +64,9 @@ void draw() {
             PVector right = lookAt.cross(new PVector(0, -1, 0));
             camPosition.sub(PVector.mult(right, camSpeed));
         }
-        
-       if (key == 'r') terra.blocks.get(0).x += 1;
-       if (key == 'f') terra.blocks.get(0).y += 1;
+
+        if (key == 'r') terra.blocks.get(0).x += 1;
+        if (key == 'f') terra.blocks.get(0).y += 1;
     }
 
     camera(camPosition.x, camPosition.y, camPosition.z, camPosition.x + lookAt.x, camPosition.y + lookAt.y, camPosition.z + lookAt.z, 0, 1, 0);
@@ -71,7 +74,16 @@ void draw() {
 
     terra.drawTerrain(camPosition);
 
-    PVector windForce = wind.copy().mult(0.1);
-    balloon.applyForce(windForce);
-    balloon.draw();
+    // Draw the skybox
+    //drawSkySphere(500);  
+}
+
+void drawSkySphere(float radius) {
+    pushMatrix();
+    noStroke();
+    translate(camPosition1.x, camPosition1.y, camPosition1.z);
+    textureMode(NORMAL);
+    texture(skyboxImage);
+    sphere(radius);
+    popMatrix();
 }

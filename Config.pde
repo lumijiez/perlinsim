@@ -1,13 +1,13 @@
-int terrainLength = 1000;
-int terrainWidth = 1000;
+int terrainLength = 100;
+int terrainWidth = 100;
 
 int minTreeHeight = 20;
 int maxTreeHeight = 70;
 
 float noiseStep = 0.02;
 float noiseScale = 5;
-long randomSeedValue = 55; 
-long noiseSeedValue = 254;  
+long randomSeedValue = 45; 
+long noiseSeedValue = 2544;  
 int noiseOctaves = 4;
 float noiseFalloff = 0.5;
 

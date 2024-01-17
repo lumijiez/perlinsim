@@ -7,11 +7,13 @@ class Balloon {
     PVector velocity;
     PVector acceleration;
     float lastWindChangeTime;
+    PShape s;
 
-    Balloon(float x, float y, float z) {
+    Balloon(float x, float y, float z, PShape s) {
         this.x = x;
         this.y = y;
         this.z = z;
+        this.s = s;
         this.radius = 50;
         this.velocity = new PVector(0, 0, 0);
         this.acceleration = new PVector(0, 0, 0);
@@ -46,19 +48,23 @@ class Balloon {
         z += 2;
 
         translate(x, y, z);
+        rotateY(PI);
+        scale(4);
 
-        fill(255, 0, 0);
-        noStroke();
-        sphere(radius);
-        stroke(1);
+        //fill(255, 0, 0);
+        //noStroke();
+        //sphere(radius);
+        //stroke(1);
 
-        drawLeg(-radius / 2, -radius / 2);
-        drawLeg(radius / 2, -radius / 2);
-        drawLeg(-radius / 2, radius / 2);
-        drawLeg(radius / 2, radius / 2);
+        //drawLeg(-radius / 2, -radius / 2);
+        //drawLeg(radius / 2, -radius / 2);
+        //drawLeg(-radius / 2, radius / 2);
+        //drawLeg(radius / 2, radius / 2);
 
-        translate(0, 0, -75);
-        box(70, 70, 25);
+        //translate(0, 0, -75);
+        //box(70, 70, 25);
+        
+        shape(s);
 
         applyBuoyancy();
         applyDamping();

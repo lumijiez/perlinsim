@@ -23,7 +23,7 @@ class Butterfly {
     void draw() {
         pushMatrix();
         rotateX(HALF_PI);
-
+// (terrainLength / 10)
         z = map(noise(perlinOffsetX, millis() * 0.0002), 0, 1, 400, 600);
         x = map(noise(perlinOffsetY, millis() * 0.0001), 0, 1, 0, terrainLength * cubeWidth);
         y = map(noise(perlinOffsetZ, millis() * 0.0001), 0, 1, 0, terrainWidth * cubeWidth);
