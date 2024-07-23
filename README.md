@@ -1,6 +1,6 @@
 # Terrain Generation and Biome Simulation
 
-This project is a terrain generation and biome simulation system implemented in [programming language]. It uses Perlin noise to generate realistic terrains and simulates various biomes with different features. Below, you will find an overview of the key features and instructions on how to use the project.
+This project is a terrain generation and biome simulation system created in [programming language]. It uses Perlin noise to generate realistic terrains and simulates various biomes with different features. Below, you will find an overview of the key features and instructions on how to use the project.
 
 ![image](https://github.com/lumijiez/processing-perlin/assets/59575049/e4e88275-a9dd-4010-bb95-2ab309f49d61)
 
